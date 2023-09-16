@@ -49,4 +49,4 @@ if __name__ == "__main__":
     #     "D:/Study/CUHKSZ/Research_Group/ICASSP2024/tmp/hifigan_merge",
     # ]
     # result = "D:/Study/CUHKSZ/Research_Group/ICASSP2024/MS-SB-CQTD/assets/audios/effectiveness"
-    print(get_pinyin("美丽的错误往往最接近真实"))
+    print(get_pinyin("谁遇见多愁善感的你"))
