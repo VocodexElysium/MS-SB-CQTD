@@ -145,9 +145,13 @@
                         A similar conclusion can be drawn for the unseen speaker evaluation of speech data.
                     </p>
                     <p>
-                        Here, we show some representative cases to reveal the effctiveness of our MS-SB-CQT
-                        Discriminator and the complementary role of the STFT-based and CQT-based Discriminators.
+                        Here, we show some representative samples to reveal the effctiveness of our MS-SB-CQT
+                        Discriminator and the complementary role of the STFT-based and CQT-based Discriminators. A case
+                        study will also be attached at the bottom of this section to explore the effctiveness of jointly
+                        training.
                     </p>
+
+                    <h3 style="text-align: center;">Representative Samples</h3>
 
                     <h4>Seen Singers</h4>
                     <div class="table-responsive pt-3">
@@ -1751,6 +1755,143 @@
                             </tbody> -->
                         </table>
                     </div>
+                    <br>
+                    <br>
+                    <h3 style="text-align: center;"> Case Study</h3>
+                    <p>We visualized the same singing voice utterance synthesized by generators trained with different
+                        discriminator combinations. It can be observed that:</p>
+                    <p><b>(1)</b> With only the time-domain-based discriminators, it is hard for our generator to model
+                        the high-frequency parts. Adding time-frequency-representation-based discriminators, neither
+                        MS-SB-CQT Discriminator (HiFi-GAN (+C)) or MS-STFT Discriminator (HiFi-GAN (+S)), significantly
+                        boosts the quality of high-frequency reconstruction.</p>
+                    <p><b>(2)</b> STFT has a fixed time-frequency resolution across all frequency bands. In the
+                        low-frequency parts, its lack of frequency resolution brings frequency distortions, resulting in
+                        phonemes with artifacts. In the high-frequency parts, its lack of time resolution limits it from
+                        reconstructing harmonic components. CQT has a dynamic resolution trade-off, thus alleviating
+                        these artifacts. However, its lack of time resolution in the low-frequency parts and the lack of
+                        frequency resolution in the high-frequency parts still bring problems like glitches and hissing
+                        noises.</p>
+                    <p><b>(3)</b> Combining STFT-based and CQT-based Discriminators integrates their strengths, thus
+                        attaining a significantly better synthesis quality.</p>
+                    <div class="table-responsive pt-3">
+                        <table class="table table-hover pt-2">
+                            <thead>
+                                <tr>
+                                    <th style="text-align: center">Ground Truth</th>
+                                    <th style="text-align: center">HiFi-GAN</th>
+                                    <th style="text-align: center">HiFi-GAN (+S)</th>
+                                    <th style="text-align: center">HiFi-GAN (+C)</th>
+                                    <th style="text-align: center">HiFi-GAN (+S+C)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="background-color: #e7ecec;">
+                                    <td style="text-align: center">
+                                        <audio style="width: 210px;" controls="controls" preload="auto">
+                                            <source src="assets/audios/effectiveness/seen_singer_1_gt.wav" />
+                                            Your browser does not support the audio element.
+                                        </audio>
+                                    </td>
+                                    <td style="text-align: center">
+                                        <audio style="width: 210px;" controls="controls" preload="auto">
+                                            <source src="assets/audios/effectiveness/seen_singer_1_orig.wav" />
+                                            Your browser does not support the audio element.
+                                        </audio>
+                                    </td>
+                                    <td style="text-align: center">
+                                        <audio style="width: 210px;" controls="controls" preload="auto">
+                                            <source src="assets/audios/effectiveness/seen_singer_1_msstftd.wav" />
+                                            Your browser does not support the audio element.
+                                        </audio>
+                                    </td>
+                                    <td style="text-align: center">
+                                        <audio style="width: 210px;" controls="controls" preload="auto">
+                                            <source src="assets/audios/effectiveness/seen_singer_1_mscqtd.wav" />
+                                            Your browser does not support the audio element.
+                                        </audio>
+                                    </td>
+                                    <td style="text-align: center">
+                                        <audio style="width: 210px;" controls="controls" preload="auto">
+                                            <source src="assets/audios/effectiveness/seen_singer_1_merge.wav" />
+                                            Your browser does not support the audio element.
+                                        </audio>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center;vertical-align:middle">
+                                        <picture controls="controls" style="width: 210px;">
+                                            <img src="assets/pics/effectiveness/seen_singer_1_gt_drawio.png"
+                                                alt="Your browser does not support the img element."
+                                                class="toEnlargeImg">
+                                        </picture>
+                                    </td>
+                                    <td style="text-align: center;vertical-align:middle">
+                                        <picture controls="controls" style="width: 210px;">
+                                            <img src="assets/pics/effectiveness/seen_singer_1_orig_drawio.png"
+                                                alt="Your browser does not support the img element."
+                                                class="toEnlargeImg">
+                                        </picture>
+                                    </td>
+                                    <td style="text-align: center;vertical-align:middle">
+                                        <picture controls="controls" style="width: 210px;">
+                                            <img src="assets/pics/effectiveness/seen_singer_1_msstftd_drawio.png"
+                                                alt="Your browser does not support the img element."
+                                                class="toEnlargeImg">
+                                        </picture>
+                                    </td>
+                                    <td style="text-align: center;vertical-align:middle">
+                                        <picture controls="controls" style="width: 210px;">
+                                            <img src="assets/pics/effectiveness/seen_singer_1_mscqtd_drawio.png"
+                                                alt="Your browser does not support the img element."
+                                                class="toEnlargeImg">
+                                        </picture>
+                                    </td>
+                                    <td style="text-align: center;vertical-align:middle">
+                                        <picture controls="controls" style="width: 210px;">
+                                            <img src="assets/pics/effectiveness/seen_singer_1_merge_drawio.png"
+                                                alt="Your browser does not support the img element."
+                                                class="toEnlargeImg">
+                                        </picture>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;vertical-align:middle;width: 500px">
+                                        能不能给我一首歌的时间
+                                    </td>
+                                    <td style="text-align: left;vertical-align:middle;width: 500px">
+                                        <b><em>能</em></b>不能给我<b><em>一</em></b>首歌的时间
+                                    </td>
+                                    <td style="text-align: left;vertical-align:middle;width: 500px">
+                                        能不能给我<b><em>一</em></b>首<b><em>歌</em></b>的<b><em>时</em></b>间
+                                    </td>
+                                    <td style="text-align: left;vertical-align:middle;width: 500px">
+                                        能不能<b><em>给</em></b>我一首<b><em>歌</em></b>的时间
+                                    </td>
+                                    <td style="text-align: left;vertical-align:middle;width: 500px">
+                                        能不能给我一首歌的时间
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;vertical-align:middle;width: 500px">
+                                        néng bù néng gěi wǒ yī shǒu gē de shí jiān
+                                    </td>
+                                    <td style="text-align: left;vertical-align:middle;width: 500px">
+                                        <b><em>néng</em></b> bù néng gěi wǒ <b><em>yī</em></b> shǒu gē de shí jiān
+                                    </td>
+                                    <td style="text-align: left;vertical-align:middle;width: 500px">
+                                        néng bù néng gěi wǒ <b><em>yī</em></b> shǒu <b><em>gē</em></b> de
+                                        <b><em>shí</em></b> jiān
+                                    </td>
+                                    <td style="text-align: left;vertical-align:middle;width: 500px">
+                                        néng bù néng <b><em>gěi</em></b> wǒ yī shǒu <b><em>gē</em></b> de shí jiān
+                                    </td>
+                                    <td style="text-align: left;vertical-align:middle;width: 500px">
+                                        néng bù néng gěi wǒ yī shǒu gē de shí jiān
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 <div class="container pt-5 mt-5 shadow p-5 mb-5 bg-white rounded">
                     <h2 id="content-samples" style="text-align: center;">Generalization Ability of MS-SB-CQT
@@ -1768,7 +1909,7 @@
                         and NSF-HiFiGAN can be improved significantly by jointly training with MS-SB-CQT and
                         MS-STFT Discriminators, with both objective and subjective preference tests confirming
                         the effectiveness.
-                        <br>
+                        <!-- <br>
                         <br>
 
                         MelGAN tends to overfit the low-frequency part
@@ -1786,14 +1927,18 @@
                         frequency details. Adding MS-STFT and MS-SB-CQT Discrimina-
                         tors tackles that problem, making synthesized samples closer to the
                         ground truth. Subjective results with a higher preference percentage
-                        also demonstrate the effectiveness.
+                        also demonstrate the effectiveness. -->
                     </p>
                     <p>
-                        Here, we show some representative cases to reveal the effctiveness of joint training
+                        Here, we show some representative samples to reveal the effctiveness of joint training
                         with our proposed MS-SB-CQT and the existing MS-STFT Discriminators on MelGAN and
-                        NSF-HiFiGAN.
+                        NSF-HiFiGAN. Case studies are conducted and attached at the bottom of this section to explore
+                        the detailed boosts.
                     </p>
-                    <h3 style="text-align: center;">MelGAN</h3>
+
+                    <h3 style="text-align: center;">Representative Samples</h3>
+
+                    <h4 style="text-align: center;">MelGAN</h4>
                     <h4>Seen Singers</h4>
                     <div class="table-responsive pt-3">
                         <table class="table table-hover pt-2">
@@ -2230,7 +2375,7 @@
                     <br>
                     <br>
                     <br>
-                    <h3 style="text-align: center;">NSF-HiFiGAN</h3>
+                    <h4 style="text-align: center;">NSF-HiFiGAN</h4>
                     <h4>Seen Singers</h4>
                     <div class="table-responsive pt-3">
                         <table class="table table-hover pt-2">
@@ -2777,6 +2922,139 @@
                                     </td>
                                 </tr>
                             </tbody> -->
+                        </table>
+                    </div>
+                    <br>
+                    <br>
+                    <h3 style="text-align: center;"> Case Study </h3>
+                    <h4 style="text-align: center;"> MelGAN </h4>
+                    <p>MelGAN tends to <b>overfit the low-frequency part</b>
+                        and <b>ignore mid and high-frequency components</b>, resulting in audible metallic noise. After
+                        adding
+                        MS-STFT and MS-SB-CQT Discriminators, it could model the <b>global information</b> of
+                        spectrogram
+                        better, remarkably increasing the synthesis quality.</p>
+                    <div class="table-responsive pt-3">
+                        <table class="table table-hover pt-2">
+                            <thead>
+                                <tr>
+                                    <th style="text-align: center">Ground Truth</th>
+                                    <th style="text-align: center">MelGAN</th>
+                                    <th style="text-align: center">MelGAN (+S+C)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="background-color: #e7ecec;">
+                                    <td style="text-align: center">
+                                        <audio style="width: 210px;" controls="controls" preload="auto">
+                                            <source src="assets/audios/generalization/melgan/seen_singer_3_gt.wav" />
+                                            Your browser does not support the audio element.
+                                        </audio>
+                                    </td>
+                                    <td style="text-align: center">
+                                        <audio style="width: 210px;" controls="controls" preload="auto">
+                                            <source src="assets/audios/generalization/melgan/seen_singer_3_orig.wav" />
+                                            Your browser does not support the audio element.
+                                        </audio>
+                                    </td>
+                                    <td style="text-align: center">
+                                        <audio style="width: 210px;" controls="controls" preload="auto">
+                                            <source src="assets/audios/generalization/melgan/seen_singer_3_merge.wav" />
+                                            Your browser does not support the audio element.
+                                        </audio>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center;vertical-align:middle">
+                                        <picture controls="controls" style="width: 210px;">
+                                            <img src="assets/pics/generalization/melgan/seen_singer_3_gt_drawio.png"
+                                                alt="Your browser does not support the img element."
+                                                class="toEnlargeImg">
+                                        </picture>
+                                    </td>
+                                    <td style="text-align: center;vertical-align:middle">
+                                        <picture controls="controls" style="width: 210px;">
+                                            <img src="assets/pics/generalization/melgan/seen_singer_3_orig_drawio.png"
+                                                alt="Your browser does not support the img element."
+                                                class="toEnlargeImg">
+                                        </picture>
+                                    </td>
+                                    <td style="text-align: center;vertical-align:middle">
+                                        <picture controls="controls" style="width: 210px;">
+                                            <img src="assets/pics/generalization/melgan/seen_singer_3_merge_drawio.png"
+                                                alt="Your browser does not support the img element."
+                                                class="toEnlargeImg">
+                                        </picture>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h4 style="text-align: center;">NSF-HiFiGAN</h4>
+                    <p>NSF-HiFiGAN can synthesize high-fidelity singing voices. However, it still lacks
+                        <b>frequency details</b>. Adding MS-STFT and MS-SB-CQT Discrimina-tors tackles that problem,
+                        making
+                        synthesized samples closer to the
+                        ground truth.
+                    </p>
+                    <div class="table-responsive pt-3">
+                        <table class="table table-hover pt-2">
+                            <thead>
+                                <tr>
+                                    <th style="text-align: center">Ground Truth</th>
+                                    <th style="text-align: center">NSF-HiFiGAN</th>
+                                    <th style="text-align: center">NSF-HiFiGAN (+S+C)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="background-color: #e7ecec;">
+                                    <td style="text-align: center">
+                                        <audio style="width: 210px;" controls="controls" preload="auto">
+                                            <source
+                                                src="assets/audios/generalization/nsfhifigan/seen_singer_2_gt.wav" />
+                                            Your browser does not support the audio element.
+                                        </audio>
+                                    </td>
+                                    <td style="text-align: center">
+                                        <audio style="width: 210px;" controls="controls" preload="auto">
+                                            <source
+                                                src="assets/audios/generalization/nsfhifigan/seen_singer_2_orig.wav" />
+                                            Your browser does not support the audio element.
+                                        </audio>
+                                    </td>
+                                    <td style="text-align: center">
+                                        <audio style="width: 210px;" controls="controls" preload="auto">
+                                            <source
+                                                src="assets/audios/generalization/nsfhifigan/seen_singer_2_merge.wav" />
+                                            Your browser does not support the audio element.
+                                        </audio>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center;vertical-align:middle">
+                                        <picture controls="controls" style="width: 210px;">
+                                            <img src="assets/pics/generalization/nsfhifigan/seen_singer_2_gt_drawio.png"
+                                                alt="Your browser does not support the img element."
+                                                class="toEnlargeImg">
+                                        </picture>
+                                    </td>
+                                    <td style="text-align: center;vertical-align:middle">
+                                        <picture controls="controls" style="width: 210px;">
+                                            <img src="assets/pics/generalization/nsfhifigan/seen_singer_2_orig_drawio.png"
+                                                alt="Your browser does not support the img element."
+                                                class="toEnlargeImg">
+                                        </picture>
+                                    </td>
+                                    <td style="text-align: center;vertical-align:middle">
+                                        <picture controls="controls" style="width: 210px;">
+                                            <img src="assets/pics/generalization/nsfhifigan/seen_singer_2_merge_drawio.png"
+                                                alt="Your browser does not support the img element."
+                                                class="toEnlargeImg">
+                                        </picture>
+                                    </td>
+                                </tr>
+                            </tbody>
                         </table>
                     </div>
                 </div>
