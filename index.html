@@ -82,16 +82,11 @@
                     <div class="text-center">
                         <h1>Multi-Scale Sub-Band Constant-Q Transform Discriminator for High-Fidelity Vocoder </h1>
                     </div>
-                    <p class="text-center">
-                        |<a href="https://arxiv.org/abs/2311.14957" class="bluehref"> Preprint
-                        </a>|<a
-                            href="https://github.com/open-mmlab/Amphion/blob/main/egs/vocoder/gan/tfr_enhanced_hifigan/README.md"
-                            class="bluehref"> Code (integrated as a
-                            part of Amphion) </a>|
-                    </p>
+                    <br>
                     <p class="text-center">
                         <b>
-                            Yicheng Gu, <a href="https://www.zhangxueyao.com/" class="plainhref">Xueyao Zhang</a>, <a
+                            <a href="https://www.yichenggu.com/" class="plainhref">Yicheng Gu</a>, <a
+                                href="https://www.zhangxueyao.com/" class="plainhref">Xueyao Zhang</a>, <a
                                 href="https://scholar.google.com/citations?user=KNqxVT0AAAAJ&hl=zh-CN"
                                 class="plainhref">Liumeng Xue</a>,
                             <a href="https://drwuz.com/" class="plainhref">Zhizheng Wu</a>
@@ -100,10 +95,43 @@
                     <p class="text-center">
                         School of Data Science, The Chinese University of Hong Kong, Shenzhen
                     </p>
-                    <div style="text-align: center;">
+                    <font size="+1">
+                        <p style="text-align: center;">
+                            <a href="https://arxiv.org/abs/2311.14957" target="_blank">[Paper]</a>
+                            <a href="https://github.com/open-mmlab/Amphion/blob/main/egs/vocoder/gan/tfr_enhanced_hifigan/README.md"
+                                target="_blank">[Code]</a>
+                        </p>
+                    </font>
+                    <!-- <div style="text-align: center;">
                         <br><br>
                         <h3>Overview</h3>
                     </div>
+                    <p>
+                        Generative Adversarial Network (GAN) based vocoders are superior in inference speed and
+                        synthesis quality when reconstructing an audible waveform from an acoustic representation. This
+                        study focuses on improving the discriminator to promote GAN-based vocoders. Most existing
+                        time-frequency-representation-based discriminators are rooted in Short-Time Fourier Transform
+                        (STFT), whose time-frequency resolution in a spectrogram is fixed, making it incompatible with
+                        signals like singing voices that require flexible attention for different frequency bands.
+                        Motivated by that, our study utilizes the Constant-Q Transform (CQT), which owns dynamic
+                        resolution among frequencies, contributing to a better modeling ability in pitch variation and
+                        harmonic tracking. Specifically, we propose a Multi-Scale Sub-Band CQT (MS-SB-CQT)
+                        Discriminator, which operates on the CQT spectrogram at multiple scales and performs sub-band
+                        processing according to different octaves. Experiments conducted on both speech and singing
+                        voices confirm the effectiveness of our proposed method. Moreover, we also verified that the
+                        CQT-based and the STFT-based discriminators could be complementary under joint training.
+                    </p>
+                    <p style="text-align: center;">
+                        <img src="assets/pics/model.png" width="100%" class="toEnlargeImg">
+                        <br>
+                        <b>Architecture of the proposed Multi-Scale Sub-Band Constant-Q Transform (MS-SB-CQT)
+                            Discriminator, which can be integrated with any GAN-based vocoder. Operator ``C'' denotes
+                            for concatenation. SBP means our proposed Sub-Band Processing module.</b>
+                    </p> -->
+                </div>
+
+                <div class="container pt-5 mt-5 shadow p-5 mb-5 bg-white rounded">
+                    <h2 id="content-samples" style="text-align: center;">Overview </h2>
                     <p>
                         Generative Adversarial Network (GAN) based vocoders are superior in inference speed and
                         synthesis quality when reconstructing an audible waveform from an acoustic representation. This
